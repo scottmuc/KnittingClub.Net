@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnittingClub" namespace="KnittingClub.Domain">
+  <class name="KnittingClub.Domain.Game, KnittingClub" table="KC_Games">
+    <id name="Id" column="GameId" unsaved-value="0">
+      <generator class="native" />
+    </id>
+
+    <property name="Title" column="Title" not-null="true" />
+    <property name="GameDate" column="GameDate" not-null="true" />
+
+    <bag name="players" access="field" cascade="all" lazy="true" inverse="false" table="KC_GamePlayerAssignments">
+      <key column="GameId" />
+      <many-to-many class="KnittingClub.Domain.Player, KnittingClub" column="PlayerId" />
+    </bag>
+    
+  </class>
+</hibernate-mapping>
