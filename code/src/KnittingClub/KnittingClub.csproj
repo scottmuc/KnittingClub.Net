@@ -99,6 +99,7 @@
     <Compile Include="Domain\Game.cs" />
     <Compile Include="Domain\BuyIn.cs" />
     <Compile Include="Domain\Payout.cs" />
+    <Compile Include="Domain\PayoutStructure.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationStartup\ApplicationStartupTasks.cs" />
@@ -113,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\Game.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\PayoutStructure.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\Payout.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

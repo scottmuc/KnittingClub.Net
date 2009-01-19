@@ -2,23 +2,17 @@ namespace KnittingClub.Domain
 {
     public class BuyIn
     {
-        private readonly int buyInAmount;
-
         public BuyIn()
-            : this(20)
-        {            
-        }
-
-        public BuyIn(int numberOfDollars)
+            : this(0)
         {
-            this.buyInAmount = numberOfDollars;
-
+            
         }
 
-        public int BuyInAmount
+        public BuyIn(int amount)
         {
-            get { return buyInAmount; }
+            this.BuyInAmount = amount;
         }
 
+        public virtual int BuyInAmount { get; set; }
     }
 }

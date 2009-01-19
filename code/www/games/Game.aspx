@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
   <ul>
     <li><a href="AddPlayers.aspx?gameId=<%= this.GameId %>">Add Players</a></li>
+    <li><a href="AddPayout.aspx?gameId=<%= this.GameId %>">Add Payout</a></li>
     <li><a href="KnockOutPlayers.aspx?gameId=<%= this.GameId %>">Knock Out Players</a></li>
   </ul>
 

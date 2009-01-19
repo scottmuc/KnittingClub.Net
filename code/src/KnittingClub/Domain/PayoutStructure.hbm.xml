@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnittingClub" namespace="KnittingClub.Domain">
+  <class name="KnittingClub.Domain.PayoutStructure, KnittingClub" table="KC_PayoutStructures">
+    <id name="Id" column="PayoutStructureId" unsaved-value="0">
+      <generator class="native" />
+    </id>
+
+
+    <list name="payouts" access="field" table="KC_Payouts">
+      <key column="PayoutStructureId"/>
+      <index column="Place"/>
+      <composite-element class="KnittingClub.Domain.Payout, KnittingClub">
+        <property name="AmountToBePaid" column="AmountToBePaid" />
+      </composite-element>
+    </list>
+  </class>
+</hibernate-mapping>

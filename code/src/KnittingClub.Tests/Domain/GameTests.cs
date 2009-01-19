@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using KnittingClub.Domain;
 using KnittingClub.Utility;
 
@@ -44,6 +45,27 @@ namespace KnittingClub.Tests.Domain
         }
 
         [Fact]
+        public void A_game_should_not_allow_any_new_entrants_if_the_game_has_started()
+        {
+            var game = new Game(new BuyIn(20));
+
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+
+
+            IList<Payout> payouts = new List<Payout>()
+                                        {
+                                            new Payout() {AmountToBePaid = 40, Place = 1},
+                                            new Payout() {AmountToBePaid = 20, Place = 2}
+                                        };
+
+            game.AddPayouts(payouts);
+
+             Assert.Throws<ArgumentException>(() => game.AddEntrant(new Player()));          
+        }
+
+        [Fact]
         public void When_a_game_is_asked_for_its_payout_structure_it_delegates_it_to_the_Payout_object_that_was_injected()
         {
             var payoutStructure = new BuyIn();
@@ -51,6 +73,51 @@ namespace KnittingClub.Tests.Domain
             var game = new Game(payoutStructure);
 
             Assert.Equal(payoutStructure, game.BuyIn);
+        }
+
+        [Fact]
+        public void A_game_is_concerted_started_when_a_payout_structure_has_been_assign()
+        {
+            var game = new Game(new BuyIn(20));
+
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+
+            Assert.False(game.IsStarted());
+
+            IList<Payout> payouts = new List<Payout>()
+                                        {
+                                            new Payout() {AmountToBePaid = 40, Place = 1},
+                                            new Payout() {AmountToBePaid = 20, Place = 2}
+                                        };
+
+            game.AddPayouts(payouts);
+
+            Assert.True(game.IsStarted());
+        }
+
+        [Fact]
+        public void Cannot_assign_a_new_payout_structure_if_the_game_has_started()
+        {
+            var game = new Game(new BuyIn(20));
+
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+
+
+            IList<Payout> payouts = new List<Payout>()
+                                        {
+                                            new Payout() {AmountToBePaid = 40, Place = 1},
+                                            new Payout() {AmountToBePaid = 20, Place = 2}
+                                        };
+
+            game.AddPayouts(payouts);
+
+            Assert.True(game.IsStarted());
+            Assert.Throws<ArgumentException>(() => game.AddPayouts(payouts));
+            Assert.True(game.IsStarted());
         }
     }
 }

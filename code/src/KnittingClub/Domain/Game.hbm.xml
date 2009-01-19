@@ -12,6 +12,13 @@
       <key column="GameId" />
       <many-to-many class="KnittingClub.Domain.Player, KnittingClub" column="PlayerId" />
     </bag>
+
+    <one-to-one name="Payout" class="KnittingClub.Domain.Payout, KnittingClub" cascade="save-update" />
+
+    <component name="buyIn" class="KnittingClub.Domain.BuyIn, KnittingClub" access="field">
+      <property name="BuyInAmount" column="BuyInAmount" not-null="true" />
+      
+    </component>
     
   </class>
 </hibernate-mapping>

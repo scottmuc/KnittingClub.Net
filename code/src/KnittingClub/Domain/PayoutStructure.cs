@@ -3,13 +3,19 @@ using System.Collections.Generic;
 
 namespace KnittingClub.Domain
 {
-    public class Payout
+    public class PayoutStructure
     {
         private readonly int buyInAmount;
         private readonly int numberOfEntrants;
-        private IList<int> payouts;
+        private IList<Payout> payouts;
 
-        public Payout(int buyInAmount, int numberOfEntrants)
+        public PayoutStructure()
+            : this(0, 0)
+        {
+            
+        }
+
+        public PayoutStructure(int buyInAmount, int numberOfEntrants)
         {
             this.buyInAmount = buyInAmount;
             this.numberOfEntrants = numberOfEntrants;
@@ -17,22 +23,18 @@ namespace KnittingClub.Domain
 
         public virtual int Id { get; set; }
 
-        public int BuyInAmount
-        {
-            get { return buyInAmount; }
-        }
 
-        public int TotalPrizePool()
+        public virtual int TotalPrizePool()
         {
             return buyInAmount * numberOfEntrants;
         }
 
-        public void SetPayouts(IList<int> listOfPayouts)
+        public virtual void SetPayouts(IList<Payout> listOfPayouts)
         {
             int totalPayouts = 0;
 
-            foreach (int payout in listOfPayouts)
-                totalPayouts += payout;
+            foreach (var payout in listOfPayouts)
+                totalPayouts += payout.AmountToBePaid;
 
             if (totalPayouts != this.TotalPrizePool())
                 throw new ArgumentException(string.Format("Payout total of {0} does not equal the prize pool of {1}", totalPayouts, this.TotalPrizePool()));
@@ -40,9 +42,9 @@ namespace KnittingClub.Domain
             this.payouts = listOfPayouts;
         }
 
-        public int GetPayoutFor(int place)
+        public virtual int GetPayoutFor(int place)
         {
-            return payouts[place - 1];
+            return payouts[place - 1].AmountToBePaid;
         }
     }
 }

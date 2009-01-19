@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnittingClub" namespace="KnittingClub.Domain">
+  <class name="KnittingClub.Domain.Payout, KnittingClub" table="KC_Payouts">
+    <id name="Id" column="PayoutId" unsaved-value="0">
+      <generator class="native" />
+    </id>
+
+    <property name="Place" column="Place" not-null="true" />
+    <property name="AmountToBePaid" column="AmountToBePaid" not-null="true" />
+
+  </class>
+</hibernate-mapping>
