@@ -54,7 +54,7 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            game.AddPayouts(GetPayoutsInt());
+            game.AddPayouts(GetPayouts());
 
              Assert.Throws<ArgumentException>(() => game.AddEntrant(new Player()));          
         }
@@ -81,7 +81,7 @@ namespace KnittingClub.Tests.Domain
             Assert.False(game.IsStarted());
 
 
-            game.AddPayouts(GetPayoutsInt());
+            game.AddPayouts(GetPayouts());
 
             Assert.True(game.IsStarted());
         }
@@ -96,10 +96,10 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            game.AddPayouts(GetPayoutsInt());
+            game.AddPayouts(GetPayouts());
 
             Assert.True(game.IsStarted());
-            Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayoutsInt()));
+            Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayouts()));
             Assert.True(game.IsStarted());
         }
 
@@ -113,13 +113,5 @@ namespace KnittingClub.Tests.Domain
                        };
         }
 
-        private static IList<int> GetPayoutsInt()
-        {
-            return new List<int>
-                       {
-                           40,
-                           20
-                       };
-        }
     }
 }

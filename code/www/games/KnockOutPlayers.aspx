@@ -3,5 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+<fieldset>
+
+  <label>
+    <span>This Player</span>
+    <asp:DropDownList ID="ctlKnockedOut" runat="server" />
+  </label>
+  
+  <label>
+    <span>Got knocked out by this Player</span>
+    <asp:DropDownList ID="ctlKnockerOuter" runat="server" />
+  </label>  
+
+  <label>
+    <asp:Button ID="ctlKnockOutPlayer" runat="server" Text="Knock Out Player" />
+  </label>
+
+</fieldset>
+
 </asp:Content>
 

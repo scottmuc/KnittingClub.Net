@@ -24,7 +24,7 @@ public partial class admin_AddPlayer : Page
 
         repo.Save(player);
 
-        Response.Redirect("DisplayPlayers.aspx");
+        Response.Redirect("./");
     }
 
     protected void Page_Load(object sender, EventArgs e)

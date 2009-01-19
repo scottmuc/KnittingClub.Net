@@ -13,12 +13,24 @@
       <many-to-many class="KnittingClub.Domain.Player, KnittingClub" column="PlayerId" />
     </bag>
 
-    <one-to-one name="Payout" class="KnittingClub.Domain.Payout, KnittingClub" cascade="save-update" />
+    <bag name="playersKnockedOut" access="field" cascade="all" lazy="true" inverse="false" table="KC_GameResults">
+      <key column="GameId" />
+      <one-to-many class="KnittingClub.Domain.GameResult, KnittingClub"  />
+    </bag>
 
     <component name="buyIn" class="KnittingClub.Domain.BuyIn, KnittingClub" access="field">
-      <property name="BuyInAmount" column="BuyInAmount" not-null="true" />
-      
+      <property name="BuyInAmount" column="BuyInAmount" not-null="true" />      
     </component>
+
+
+    <list name="payouts" access="field" cascade="all" lazy="true" table="KC_Payouts">
+      <key column="GameId" />
+      <index column="Place" />
+      <one-to-many class="KnittingClub.Domain.Payout, KnittingClub" />
+    </list>
+
+    
+    
     
   </class>
 </hibernate-mapping>

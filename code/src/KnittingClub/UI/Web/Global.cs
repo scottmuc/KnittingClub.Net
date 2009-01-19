@@ -1,7 +1,10 @@
 using System;
 using System.Web;
+using Castle.Facilities.NHibernateIntegration;
 using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
+using NHibernate;
+using NHibernate.Context;
 using Rhino.Commons;
 
 namespace KnittingClub.UI.Web

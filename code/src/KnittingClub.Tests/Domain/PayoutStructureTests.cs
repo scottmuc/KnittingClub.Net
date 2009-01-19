@@ -22,7 +22,7 @@ namespace KnittingClub.Tests.Domain
             var payoutStructure = new PayoutStructure(20, 4);
 
 
-            Exception ex = Assert.Throws<ArgumentException>(() => payoutStructure.SetPayouts(GetPayoutsInt()));
+            Exception ex = Assert.Throws<ArgumentException>(() => payoutStructure.SetPayouts(GetPayouts()));
             Assert.Equal("Payout total of 100 does not equal the prize pool of 80", ex.Message);
         }
 
@@ -32,7 +32,7 @@ namespace KnittingClub.Tests.Domain
             var payoutStructure = new PayoutStructure(20, 5);
 
 
-            payoutStructure.SetPayouts(GetPayoutsInt());
+            payoutStructure.SetPayouts(GetPayouts());
 
             const int firstPlace = 1;
             int result = payoutStructure.GetPayoutFor(firstPlace);
@@ -49,13 +49,5 @@ namespace KnittingClub.Tests.Domain
                        };
         }
 
-        private static IList<int> GetPayoutsInt()
-        {
-            return new List<int>
-                       {
-                           60,
-                           40
-                       };
-        }
     }
 }

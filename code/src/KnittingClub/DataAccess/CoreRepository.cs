@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Web;
 using Castle.Facilities.NHibernateIntegration;
-using Castle.Services.Transaction;
 using NHibernate;
 
 
@@ -20,6 +20,7 @@ namespace KnittingClub.DataAccess
         {
             using(var session = sessionManager.OpenSession())
             {
+                HttpContext.Current.Trace.Write(session.FlushMode.ToString());
                 return session.Load<T>(id);
             }
         }
@@ -34,23 +35,23 @@ namespace KnittingClub.DataAccess
             }
         }
 
-        [Transaction(TransactionMode.Requires)]
         public void Save(T entity)
         {
             using(var session = sessionManager.OpenSession())
+            using(var transaction = session.BeginTransaction())
             {
                 session.Save(entity);
-                
+                transaction.Commit();                
             }
         }
 
-        [Transaction(TransactionMode.Requires)]
         public void Update(T entity)
         {
             using(var session = sessionManager.OpenSession())
+            using(var transaction = session.BeginTransaction())
             {
                 session.Update(entity);
-                session.Flush();
+                transaction.Commit(); 
             }
         }
     }
