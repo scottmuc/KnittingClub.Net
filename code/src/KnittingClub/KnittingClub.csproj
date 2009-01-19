@@ -116,10 +116,8 @@
     <EmbeddedResource Include="Domain\Game.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Domain\PayoutStructure.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Domain\Payout.hbm.xml" />
+    <EmbeddedResource Include="Domain\PayoutStructure.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

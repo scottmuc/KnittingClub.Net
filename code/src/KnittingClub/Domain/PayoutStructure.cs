@@ -22,7 +22,7 @@ namespace KnittingClub.Domain
         }
 
         public virtual int Id { get; set; }
-
+        public virtual Game Game { get; set; }
 
         public virtual int TotalPrizePool()
         {

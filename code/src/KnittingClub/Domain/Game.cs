@@ -60,7 +60,7 @@ namespace KnittingClub.Domain
                 throw new ArgumentException("Cannot adjust payouts after a game has started.");
 
             var payoutStructure = new PayoutStructure(buyIn.BuyInAmount, players.Count);
-            payoutStructure.SetPayouts(payouts);
+            //payoutStructure.SetPayouts(payouts);
 
             this.Payout = payoutStructure;
         }

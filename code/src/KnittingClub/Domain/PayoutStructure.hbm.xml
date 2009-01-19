@@ -5,13 +5,6 @@
       <generator class="native" />
     </id>
 
-
-    <list name="payouts" access="field" table="KC_Payouts">
-      <key column="PayoutStructureId"/>
-      <index column="Place"/>
-      <composite-element class="KnittingClub.Domain.Payout, KnittingClub">
-        <property name="AmountToBePaid" column="AmountToBePaid" />
-      </composite-element>
-    </list>
+    <one-to-one name="Game" class="KnittingClub.Domain.Game, KnittingClub" cascade="save-update" constrained="true" />
   </class>
 </hibernate-mapping>
