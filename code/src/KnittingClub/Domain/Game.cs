@@ -54,13 +54,13 @@ namespace KnittingClub.Domain
         }
 
 
-        public virtual void AddPayouts(IList<Payout> payouts)
+        public virtual void AddPayouts(IList<int> payouts)
         {
             if (this.IsStarted())
                 throw new ArgumentException("Cannot adjust payouts after a game has started.");
 
             var payoutStructure = new PayoutStructure(buyIn.BuyInAmount, players.Count);
-            //payoutStructure.SetPayouts(payouts);
+            payoutStructure.SetPayouts(payouts);
 
             this.Payout = payoutStructure;
         }

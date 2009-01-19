@@ -16,18 +16,13 @@ namespace KnittingClub.Tests.Domain
         }
 
 
-        [Fact] 
+        [Fact]
         public void When_assiging_payouts_the_totals_should_be_equal_to_total_prize_pool()
         {
             var payoutStructure = new PayoutStructure(20, 4);
 
-            IList<Payout> payouts = new List<Payout>()
-                                        {
-                                            new Payout() {AmountToBePaid = 60, Place = 1},
-                                            new Payout() {AmountToBePaid = 40, Place = 2}
-                                        };
 
-            Exception ex = Assert.Throws<ArgumentException>(() => payoutStructure.SetPayouts(payouts));
+            Exception ex = Assert.Throws<ArgumentException>(() => payoutStructure.SetPayouts(GetPayoutsInt()));
             Assert.Equal("Payout total of 100 does not equal the prize pool of 80", ex.Message);
         }
 
@@ -36,18 +31,31 @@ namespace KnittingClub.Tests.Domain
         {
             var payoutStructure = new PayoutStructure(20, 5);
 
-            IList<Payout> payouts = new List<Payout>()
-                                        {
-                                            new Payout() {AmountToBePaid = 60, Place = 1},
-                                            new Payout() {AmountToBePaid = 40, Place = 2}
-                                        };
 
-            payoutStructure.SetPayouts(payouts);
+            payoutStructure.SetPayouts(GetPayoutsInt());
 
             const int firstPlace = 1;
             int result = payoutStructure.GetPayoutFor(firstPlace);
 
             Assert.Equal(60, result);
-        }     
+        }
+
+        private IList<Payout> GetPayouts()
+        {
+            return new List<Payout>
+                       {
+                           new Payout {AmountToBePaid = 60, Place = 1},
+                           new Payout {AmountToBePaid = 40, Place = 2}
+                       };
+        }
+
+        private static IList<int> GetPayoutsInt()
+        {
+            return new List<int>
+                       {
+                           60,
+                           40
+                       };
+        }
     }
 }

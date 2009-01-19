@@ -7,7 +7,7 @@ namespace KnittingClub.Domain
     {
         private readonly int buyInAmount;
         private readonly int numberOfEntrants;
-        private IList<Payout> payouts;
+        private IList<int> payouts;
 
         public PayoutStructure()
             : this(0, 0)
@@ -29,12 +29,12 @@ namespace KnittingClub.Domain
             return buyInAmount * numberOfEntrants;
         }
 
-        public virtual void SetPayouts(IList<Payout> listOfPayouts)
+        public virtual void SetPayouts(IList<int> listOfPayouts)
         {
             int totalPayouts = 0;
 
             foreach (var payout in listOfPayouts)
-                totalPayouts += payout.AmountToBePaid;
+                totalPayouts += payout;
 
             if (totalPayouts != this.TotalPrizePool())
                 throw new ArgumentException(string.Format("Payout total of {0} does not equal the prize pool of {1}", totalPayouts, this.TotalPrizePool()));
@@ -44,7 +44,7 @@ namespace KnittingClub.Domain
 
         public virtual int GetPayoutFor(int place)
         {
-            return payouts[place - 1].AmountToBePaid;
+            return payouts[place - 1];
         }
     }
 }

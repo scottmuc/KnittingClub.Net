@@ -54,13 +54,7 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            IList<Payout> payouts = new List<Payout>()
-                                        {
-                                            new Payout() {AmountToBePaid = 40, Place = 1},
-                                            new Payout() {AmountToBePaid = 20, Place = 2}
-                                        };
-
-            game.AddPayouts(payouts);
+            game.AddPayouts(GetPayoutsInt());
 
              Assert.Throws<ArgumentException>(() => game.AddEntrant(new Player()));          
         }
@@ -86,13 +80,8 @@ namespace KnittingClub.Tests.Domain
 
             Assert.False(game.IsStarted());
 
-            IList<Payout> payouts = new List<Payout>()
-                                        {
-                                            new Payout() {AmountToBePaid = 40, Place = 1},
-                                            new Payout() {AmountToBePaid = 20, Place = 2}
-                                        };
 
-            game.AddPayouts(payouts);
+            game.AddPayouts(GetPayoutsInt());
 
             Assert.True(game.IsStarted());
         }
@@ -107,17 +96,30 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            IList<Payout> payouts = new List<Payout>()
-                                        {
-                                            new Payout() {AmountToBePaid = 40, Place = 1},
-                                            new Payout() {AmountToBePaid = 20, Place = 2}
-                                        };
-
-            game.AddPayouts(payouts);
+            game.AddPayouts(GetPayoutsInt());
 
             Assert.True(game.IsStarted());
-            Assert.Throws<ArgumentException>(() => game.AddPayouts(payouts));
+            Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayoutsInt()));
             Assert.True(game.IsStarted());
+        }
+
+
+        private IList<Payout> GetPayouts()
+        {
+            return new List<Payout>
+                       {
+                           new Payout {AmountToBePaid = 40, Place = 1},
+                           new Payout {AmountToBePaid = 20, Place = 2}
+                       };
+        }
+
+        private static IList<int> GetPayoutsInt()
+        {
+            return new List<int>
+                       {
+                           40,
+                           20
+                       };
         }
     }
 }

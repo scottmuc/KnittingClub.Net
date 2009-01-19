@@ -6,7 +6,7 @@ namespace KnittingClub.DataAccess
     public class GameRepository : IGameRepository
     {
         private readonly ISessionManager sessionManager;
-        private IRepository<Game> coreRepository;
+        private readonly IRepository<Game> coreRepository;
 
         public GameRepository(ISessionManager sessionManager, IRepository<Game> coreRepository)
         {

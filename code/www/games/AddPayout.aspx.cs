@@ -23,18 +23,18 @@ public partial class games_AddPayout : Page
     {
         int numberOfPlayersPaid = Convert.ToInt32(ctlNumberPaid.SelectedValue);
 
-        IList<Payout> payouts = new List<Payout>();
+        var payouts = new List<int>();
 
-        payouts.Add(GetPayoutFromTextBox(ctlFirstPlace, 1));
+        payouts.Add(GetIntFromTextBox(ctlFirstPlace));
 
         if (numberOfPlayersPaid >= 2)
-            payouts.Add(GetPayoutFromTextBox(ctlSecondPlace, 2));
+            payouts.Add(GetIntFromTextBox(ctlSecondPlace));
 
         if (numberOfPlayersPaid >= 3)
-            payouts.Add(GetPayoutFromTextBox(ctlThirdPlace, 3));
+            payouts.Add(GetIntFromTextBox(ctlThirdPlace));
 
         if (numberOfPlayersPaid >= 4)
-            payouts.Add(GetPayoutFromTextBox(ctlFourthPlace, 4));
+            payouts.Add(GetIntFromTextBox(ctlFourthPlace));
 
         var game = repository.GetById(this.GameId);
 
@@ -53,7 +53,12 @@ public partial class games_AddPayout : Page
 
     private static Payout GetPayoutFromTextBox(ITextControl tb, int place)
     {
-        int amount = Convert.ToInt32(tb.Text.Trim());
+        int amount = GetIntFromTextBox(tb);
         return new Payout() {AmountToBePaid = amount, Place = place};
+    }
+
+    private static int GetIntFromTextBox(ITextControl tb)
+    {
+        return Convert.ToInt32(tb.Text.Trim());
     }
 }

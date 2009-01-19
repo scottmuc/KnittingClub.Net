@@ -7,7 +7,7 @@ namespace KnittingClub.DataAccess
     public class PlayerRepository : IPlayerRepository
     {
         private readonly ISessionManager sessionManager;
-        private IRepository<Player> coreRepository;
+        private readonly IRepository<Player> coreRepository;
 
         public PlayerRepository(ISessionManager sessionManager, IRepository<Player> coreRepository)
         {
