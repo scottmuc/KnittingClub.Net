@@ -9,7 +9,7 @@ namespace KnittingClub.Domain
         private readonly BuyIn buyIn;
 
         public Game()
-            : this(new BuyIn(20))
+            : this(new BuyIn(0))
         {
             
         }
@@ -32,11 +32,10 @@ namespace KnittingClub.Domain
 
         public virtual void AddEntrant(Player entrant)
         {
-            if (!players.Contains(entrant))
-            {
-                players.Add(entrant);
-                buyIn.IncrementPrizePool();
-            }
+            if (players.Contains(entrant))
+                throw new ArgumentException("That player is already in the game.");
+                
+            players.Add(entrant);            
         }
 
         public virtual BuyIn BuyIn

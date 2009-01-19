@@ -98,6 +98,7 @@
     <Compile Include="DataAccess\CoreRepository.cs" />
     <Compile Include="Domain\Game.cs" />
     <Compile Include="Domain\BuyIn.cs" />
+    <Compile Include="Domain\Payout.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationStartup\ApplicationStartupTasks.cs" />

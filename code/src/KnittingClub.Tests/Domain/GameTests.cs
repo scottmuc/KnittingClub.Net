@@ -1,3 +1,4 @@
+using System;
 using KnittingClub.Domain;
 using KnittingClub.Utility;
 
@@ -29,14 +30,15 @@ namespace KnittingClub.Tests.Domain
         }
 
         [Fact]
-        public void When_a_entrant_is_attempted_to_be_added_more_than_once_it_should_only_be_added_once() 
+        public void When_a_entrant_is_attempted_to_be_added_more_than_once_it_throw_an_argument_exception() 
         {
             var game = new Game(new BuyIn());
 
             var entrant = new Player();
             game.AddEntrant(entrant);
-            game.AddEntrant(entrant);
 
+
+            Assert.Throws<ArgumentException>(() => game.AddEntrant(entrant));            
             Assert.Contains(entrant, game.AllEntrants());
             Assert.Equal(1, game.AllEntrants().GetCount());
         }
