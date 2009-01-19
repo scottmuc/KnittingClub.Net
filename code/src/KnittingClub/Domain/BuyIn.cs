@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace KnittingClub.Domain
 {
-    public class PayoutStructure
+    public class BuyIn
     {
         private readonly int buyInAmount;
         private IList<int> payouts;
 
-        public PayoutStructure()
+        public BuyIn()
             : this(20)
         {            
         }
 
-        public PayoutStructure(int numberOfDollars)
+        public BuyIn(int numberOfDollars)
         {
             this.buyInAmount = numberOfDollars;
             this.TotalPrizePool = 0;

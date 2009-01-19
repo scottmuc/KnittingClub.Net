@@ -5,12 +5,12 @@ using Xunit;
 
 namespace KnittingClub.Tests.Domain
 {
-    public class PayoutStructureTests
+    public class BuyInTests
     {
         [Fact]
         public void PayoutStructure_depends_on_the_value_of_the_buyin()
         {
-            var payoutStructure = new PayoutStructure(20);
+            var payoutStructure = new BuyIn(20);
 
             Assert.Equal(20, payoutStructure.BuyInAmount);
         }
@@ -18,7 +18,7 @@ namespace KnittingClub.Tests.Domain
         [Fact]
         public void When_a_buy_in_is_added_to_payour_structure_the_prize_pool_should_increase_by_the_same_amount()
         {
-            var payoutStructure = new PayoutStructure(20);
+            var payoutStructure = new BuyIn(20);
             payoutStructure.IncrementPrizePool();
 
             Assert.Equal(20, payoutStructure.TotalPrizePool);
@@ -50,9 +50,9 @@ namespace KnittingClub.Tests.Domain
             Assert.Equal(60, result);
         }
 
-        private static PayoutStructure CreatePayoutStructureWithNPlayers(int numberOfPlayers)
+        private static BuyIn CreatePayoutStructureWithNPlayers(int numberOfPlayers)
         {
-            var payoutStructure = new PayoutStructure(20);
+            var payoutStructure = new BuyIn(20);
 
             while(numberOfPlayers-- != 0)
                 payoutStructure.IncrementPrizePool();

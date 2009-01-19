@@ -18,16 +18,13 @@ public partial class CreateGame : Page
 
     private void CreateNewGame()
     {
-        var game = new Game
-                       {
-                           Title = ctlTitle.Text.Trim(),
-                           GameDate = DateTime.Now
-                       };
+        var game = new Game(new BuyIn(20)) {Title = ctlTitle.Text.Trim(), GameDate = DateTime.Now};
+
 
         var repo = IoC.Resolve<IGameRepository>();
 
         repo.Save(game);
 
-        Response.Redirect("DisplayGames.aspx");
+        Response.Redirect("./");
     }
 }

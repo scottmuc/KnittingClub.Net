@@ -20,11 +20,10 @@
     </div>
     </form>
     <hr />
-    <ul>
-      <li><a href="AddPlayer.aspx">Add Players</a></li>
-      <li><a href="CreateGame.aspx">Create Game</a></li>
-      <li><a href="DisplayGames.aspx">Display Games</a></li>
-      <li><a href="DisplayPlayers.aspx">Display Players</a></li>
+    <ul>   
+      <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/players/Add.aspx" Text="Add Players" runat="server" /></li>
+      <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/games/Create.aspx" Text="Create Game" runat="server" /></li>
+      <li><asp:HyperLink ID="HyperLink3" NavigateUrl="~/games/" Text="View Games" runat="server" /></li>
     </ul>
 </body>
 </html>

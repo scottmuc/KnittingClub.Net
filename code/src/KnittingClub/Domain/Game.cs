@@ -6,11 +6,17 @@ namespace KnittingClub.Domain
     public class Game
     {
         private readonly IList<Player> players;
-        private readonly PayoutStructure payoutStructure;
-       
-        public Game(PayoutStructure payoutStructure)
+        private readonly BuyIn buyIn;
+
+        public Game()
+            : this(new BuyIn(20))
         {
-            this.payoutStructure = payoutStructure;
+            
+        }
+
+        public Game(BuyIn buyIn)
+        {
+            this.buyIn = buyIn;
             players = new List<Player>();
         }
 
@@ -29,13 +35,13 @@ namespace KnittingClub.Domain
             if (!players.Contains(entrant))
             {
                 players.Add(entrant);
-                payoutStructure.IncrementPrizePool();
+                buyIn.IncrementPrizePool();
             }
         }
 
-        public virtual PayoutStructure PayoutStructure
+        public virtual BuyIn BuyIn
         {
-            get { return payoutStructure; }
+            get { return buyIn; }
         }
     }
 }
