@@ -1,14 +1,15 @@
 using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
+using KnittingClub.Utility;
 using Rhino.Commons;
 
 namespace KnittingClub.Services.ApplicationStartup
 {
-    public class ApplicationStartupTasks : ICommand
+    public class ContainerBootstrapper : ICommand
     {
         public static void ApplicationBegin() 
         {
-            new ApplicationStartupTasks().Execute();
+            new ContainerBootstrapper().Execute();
         }
 
         public void Execute()
@@ -17,10 +18,5 @@ namespace KnittingClub.Services.ApplicationStartup
 
             IoC.Initialize(container);
         }
-    }
-
-    public interface ICommand
-    {
-        void Execute();
     }
 }

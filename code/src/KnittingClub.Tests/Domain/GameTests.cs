@@ -103,8 +103,40 @@ namespace KnittingClub.Tests.Domain
             Assert.True(game.IsStarted());
         }
 
+        [Fact]
+        public void When_assiging_payouts_the_totals_should_be_equal_to_total_prize_pool()
+        {
+            var game = new Game(new BuyIn(20));
 
-        private IList<Payout> GetPayouts()
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+
+
+            Exception ex = Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayouts()));
+            Assert.Equal("Payout total of 60 does not equal the prize pool of 80", ex.Message);
+        }
+
+        [Fact]
+        public void When_asked_for_the_payout_of_1st_place_should_return_first_payout()
+        {
+            var game = new Game(new BuyIn(20));
+
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+            game.AddEntrant(new Player());
+
+            game.AddPayouts(GetPayouts());
+
+            const int firstPlace = 1;
+            int result = game.GetPayoutFor(firstPlace);
+
+            Assert.Equal(40, result);
+        }
+
+
+        private static IList<Payout> GetPayouts()
         {
             return new List<Payout>
                        {

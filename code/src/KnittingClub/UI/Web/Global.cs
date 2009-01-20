@@ -1,10 +1,7 @@
 using System;
 using System.Web;
-using Castle.Facilities.NHibernateIntegration;
 using Castle.Windsor;
-using Castle.Windsor.Configuration.Interpreters;
-using NHibernate;
-using NHibernate.Context;
+using KnittingClub.Services.ApplicationStartup;
 using Rhino.Commons;
 
 namespace KnittingClub.UI.Web
@@ -13,9 +10,7 @@ namespace KnittingClub.UI.Web
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            IWindsorContainer container = new WindsorContainer(new XmlInterpreter());
-
-            IoC.Initialize(container);
+            ContainerBootstrapper.ApplicationBegin();
         }
 
 		/// <summary>

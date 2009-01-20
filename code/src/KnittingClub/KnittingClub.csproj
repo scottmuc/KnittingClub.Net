@@ -47,10 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\thirdparty\libs\castle\Castle.MicroKernel.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Services.Transaction, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\www\Bin\Castle.Services.Transaction.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\thirdparty\libs\castle\Castle.Windsor.dll</HintPath>
@@ -100,10 +96,10 @@
     <Compile Include="Domain\BuyIn.cs" />
     <Compile Include="Domain\GameResult.cs" />
     <Compile Include="Domain\Payout.cs" />
-    <Compile Include="Domain\PayoutStructure.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ApplicationStartup\ApplicationStartupTasks.cs" />
+    <Compile Include="Services\ApplicationStartup\ContainerBootstrapper.cs" />
+    <Compile Include="Utility\ICommand.cs" />
     <Compile Include="UI\Web\Controls\PlayersDropDownList.cs" />
     <Compile Include="UI\Web\Global.cs" />
     <Compile Include="Utility\CollectionExtensions.cs" />

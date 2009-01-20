@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Domain\GameTests.cs" />
     <Compile Include="Domain\BuyInTests.cs" />
-    <Compile Include="Domain\PayoutStructureTests.cs" />
     <Compile Include="Domain\PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

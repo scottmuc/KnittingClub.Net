@@ -20,7 +20,6 @@ namespace KnittingClub.DataAccess
         {
             using(var session = sessionManager.OpenSession())
             {
-                HttpContext.Current.Trace.Write(session.FlushMode.ToString());
                 return session.Load<T>(id);
             }
         }
