@@ -6,78 +6,59 @@
 	
 	<!-- directories -->
 	<property name="base.dir" value="${directory::get-parent-directory(project::get-base-directory())}" />
+  
 	<property name="third.party.dir" value="${base.dir}\thirdparty"/>
-	<property name="build.dir" value="${base.dir}\build"/>
-	<property name="build.tools.dir" value="${build.dir}\tools" />
-	<property name="thirdparty.tools.dir" value="${third.party.dir}\tools" />
-	<property name="thirdparty.lib.dir" value="${third.party.dir}\libs" />
+  <property name="thirdparty.tools.dir" value="${third.party.dir}\tools" />
+  <property name="thirdparty.lib.dir" value="${third.party.dir}\libs" />
+  
+  <property name="build.dir" value="${base.dir}\build"/>
 	<property name="config.dir" value="${build.dir}\config" />
-	<property name="product.dir" value="${base.dir}\src"/>	
-	<property name="product.app.dir" value="${product.dir}" />	
-	<property name="build.artifacts.dir" value="${build.dir}\buildartifacts" />
-	<property name="web.ui.dir" value="${base.dir}\www" />	
-	<property name="compile.dir" value="${build.artifacts.dir}" />
+  <property name="build.artifacts.dir" value="${build.dir}\buildartifacts" />
+  <property name="compile.dir" value="${build.artifacts.dir}" />
+  
+	<property name="code.dir" value="${base.dir}\code"/>
+  <property name="src.dir" value="${code.dir}\src"/>
+  <property name="web.dir" value="${code.dir}\www" />
 	<!-- end directories -->
 	
 	<!-- file names -->	
-	<property name="log4net.lib" value="${thirdparty.lib.dir}\log4net\bin\log4net.dll" />
-	<property name="app.config" value="${config.dir}\app.config" />	
-	<property name="log4net.config" value="${config.dir}\log4net.config.xml" />
-	<property name="nhibernate.config" value="${config.dir}\hibernate.cfg.xml" />
-	
-	<property name="now" value="${datetime::now()}"/>
 	<property name="project.lib" value="${project::get-name()}.dll"/>	
 	<!-- end file names -->
 	
-	<!-- logging properties -->
-	<property name="log.dir" value="${build.dir}\logs"/>
-	<property name="log.file.name" value="${log.dir}\log.txt"/>
-	<property name="log.level" value="DEBUG"/>
-	<property name="path.to.runtime.log4net.config"	value="${log4net.config}"/>
-	<!-- logging properties -->
 	
 	<fileset id="product.app.sources" >
-		<include name="${product.app.dir}\**\*.cs"/>
-		<exclude name="${product.app.dir}\**\AssemblyInfo.cs" />
-		<exclude name="${web.ui.dir}\**\*.*" />		
+		<include name="${src.dir}\**\*.cs"/>
+		<exclude name="${src.dir}\**\AssemblyInfo.cs" />
+		<exclude name="${web.dir}\**\*.*" />		
 	</fileset>
 
-	<fileset id="product.references">
-		<include name="${thirdparty.tools.dir}\mbunit\bin\MBUnit.Framework.dll" />
-		<include name="${thirdparty.lib.dir}\rhino-tools\Rhino.Mocks.dll" />
-		<include name="${thirdparty.lib.dir}\log4net\bin\log4net.dll" />
-		<include name="${thirdparty.lib.dir}\subsonic\subsonic.dll" />
-		
-		<include name="${thirdparty.lib.dir}\mysql-connector\bin\MySql.Data.dll" />
-		
-		<include name="${thirdparty.lib.dir}\nhibernate\NHibernate.dll" />
-		<include name="${thirdparty.lib.dir}\nhibernate\Iesi.Collections.dll" />
-		<include name="${thirdparty.lib.dir}\nhibernate\Castle.DynamicProxy2.dll" />
-		<include name="${thirdparty.lib.dir}\nhibernate\Castle.Core.dll" />
+	<fileset id="product.references">	
+		<include name="${thirdparty.lib.dir}\sqlite\bin\System.Data.SQLite.dll" />
+
+    <include name="${thirdparty.lib.dir}\castle\Castle.Core.dll" />
+    <include name="${thirdparty.lib.dir}\castle\Castle.DynamicProxy2.dll" />
+    <include name="${thirdparty.lib.dir}\castle\Castle.Facilities.NHibernateIntegration.dll" />
+    <include name="${thirdparty.lib.dir}\castle\Castle.MicroKernel.dll" />
+    <include name="${thirdparty.lib.dir}\castle\Castle.Windsor.dll" />
+
+    <include name="${thirdparty.lib.dir}\nhibernate\NHibernate.dll" />
     <include name="${thirdparty.lib.dir}\nhibernate\NHibernate.ByteCode.Castle.dll" />
-		
-		<include name="${thirdparty.lib.dir}\NeatUpload-1.2.29\bin\Release\Brettle.Web.NeatUpload.dll" />
-		<include name="${thirdparty.tools.dir}\bddunit\bin\bddunit.exe" />
+
+    <include name="${thirdparty.lib.dir}\rhino-tools\Rhino.Commons.dll" />
+
+    <include name="${thirdparty.tools.dir}\xunit\xunit.dll" />		
 	</fileset>	
 	
 	<fileset id="resource.references" >
-		<include name="${product.app.dir}\RakeFreeze\Domain\*.xml"/>
+		<include name="${src.dir}\KnittingClub\Domain\*.xml"/>
 	</fileset>	
-	
-	<include buildfile="local.properties.xml" />
-	<include buildfile="deploy.build"/>
-	<include buildfile="test.build"/>
-	<include buildfile="release.build"/>
-  <include buildfile="database.build"/>
 	
 	<target name="clean" description="remove all build products">
 		<delete dir="${build.artifacts.dir}" />
-		<delete dir="${log.dir}" failonerror="false" />
 	</target>
 	
 	<target name="init" depends="clean">
 		<mkdir dir="${build.artifacts.dir}" />
-		<mkdir dir="${log.dir}" failonerror="false" />		
 	</target>	
 	
 	<target name="compile" depends="init">
@@ -87,46 +68,4 @@
 			<resources refid="resource.references"/>
 		</csc>
 	</target>
-    
-
-	<target name="expand.config">
-		<copy 	file="${app.config}.template"
-				tofile="${app.config}">
-		 	<filterchain>
-				<replacetokens>
-		 			<token key="debug" value="true" />
-		 			<token key="web.dir" value="${web.ui.dir}" />
-					<token key="log.file.name" value="${log.file.name}"/>
-					<token key="log.level" value="${log.level}"/>		 		
-		 		</replacetokens>
-		 	</filterchain>
-		</copy>
-	
-		<copy 	file="${log4net.config}.template"
-				tofile="${log4net.config}">
-		 	<filterchain>
-				<replacetokens>
-		 			<token key="debug" value="true" />
-		 			<token key="web.dir" value="${web.ui.dir}" />
-					<token key="log.file.name" value="${log.file.name}"/>
-					<token key="log.level" value="${log.level}"/>		 		
-		 		</replacetokens>
-		 	</filterchain>
-		</copy>
-		<copy 	file="${nhibernate.config}.template"
-				tofile="${nhibernate.config}">
-		 	<filterchain>
-				<replacetokens>
-		 			<token key="debug" value="true" />
-		 			<token key="web.dir" value="${web.ui.dir}" />
-					<token key="log.file.name" value="${log.file.name}"/>
-					<token key="log.level" value="${log.level}"/>		 		
-		 		</replacetokens>
-		 	</filterchain>
-		</copy>		
-	</target>
-
-	<target name="deploy" depends="deploy.binaries,deploy.config" />
-	
-	<target name="release" depends="release.clean,release.compile,release.config,release.web" />
 </project>
