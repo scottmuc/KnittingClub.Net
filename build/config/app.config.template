@@ -63,7 +63,9 @@
         <add name="ScriptModule" type="System.Web.Handlers.ScriptModule, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
       </httpModules>
 
-        
+      <authorization>
+        <deny users="?" />
+      </authorization>  
     </system.web>
 
     <system.codedom>
@@ -88,5 +90,7 @@
         </dependentAssembly>
       </assemblyBinding>
     </runtime>
-
+  <location path="Default.aspx">
+    <allow users="*" />    
+  </location>
 </configuration>
