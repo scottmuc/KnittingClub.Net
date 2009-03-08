@@ -23,7 +23,7 @@
   <h3>Game Results</h3>
   <asp:Repeater ID="ctlResults" runat="server">
     <ItemTemplate>
-      <%# Eval("Place") %> <%# ((GameResult) Container.DataItem).Player.NickName %><br />
+      <%# Eval("Place") %> <%# ((GameResult) Container.DataItem).Player.NickName %> <%# GetKnockedOutPlayerString((GameResult) Container.DataItem) %><br />
     </ItemTemplate>
   </asp:Repeater>    
 
