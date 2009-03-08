@@ -11,7 +11,7 @@ public partial class DisplayGames : Page
         {
             var repo = IoC.Resolve<IGameRepository>();
 
-            ctlGames.DataSource = repo.GetAll();
+            ctlGames.DataSource = repo.GetAllLatestFirst();
             ctlGames.DataBind();
 
         }
