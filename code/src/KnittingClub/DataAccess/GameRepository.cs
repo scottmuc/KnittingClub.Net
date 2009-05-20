@@ -20,9 +20,7 @@ namespace KnittingClub.DataAccess
             using (var session = sessionManager.OpenSession())
             {
                 var criteria = session.CreateCriteria(typeof (Game)).AddOrder(Order.Desc("GameDate"));
-
-                return criteria.List<Game>();
-                    
+                return criteria.List<Game>();                    
             }
         }
     }

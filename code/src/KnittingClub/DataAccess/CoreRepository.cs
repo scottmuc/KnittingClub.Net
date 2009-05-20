@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Web;
 using Castle.Facilities.NHibernateIntegration;
 using NHibernate;
 
@@ -29,7 +28,6 @@ namespace KnittingClub.DataAccess
             using(var session = sessionManager.OpenSession())
             {
                 ICriteria crit = session.CreateCriteria(typeof (T));
-
                 return new List<T>(crit.List<T>()).ToArray();
             }
         }

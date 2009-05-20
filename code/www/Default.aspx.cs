@@ -1,16 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using KnittingClub.Domain;
+using KnittingClub.DataAccess;
+using Rhino.Commons;
 
-public partial class _Default : System.Web.UI.Page
+public partial class _Default : Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        var repo = IoC.Resolve<IPlayerRepository>();
 
+        var players = from p in repo.GetAll()
+                      orderby p.TotalEarnings descending
+                      select p;
+
+        ctlYearlyStats.DataSource = players;
+        ctlYearlyStats.DataBind();
     }
-
 }

@@ -6,5 +6,23 @@
 
 <h1>CBC Knitting Club</h1>
 
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Total Points</th>
+  </tr>
+<asp:Repeater ID="ctlYearlyStats" runat="server">
+<ItemTemplate>
+  <tr>
+    <td><%# Eval("NickName") %></td>
+    <td><%# Eval("TotalEarnings") %></td>
+  </tr>
+</ItemTemplate>
+
+</asp:Repeater>
+
+</table>
+
 </asp:Content>
 

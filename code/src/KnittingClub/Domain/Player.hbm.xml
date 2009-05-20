@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnittingClub" namespace="KnittingClub.Domain">
   <class name="KnittingClub.Domain.Player, KnittingClub" table="KC_Players">
-    <id name="Id" column="PlayerId" unsaved-value="0">
+    <id name="id" access="field" column="PlayerId" unsaved-value="0">
       <generator class="native" />
     </id>
 
     <property name="FirstName" column="FirstName" not-null="true" />
     <property name="LastName" column="LastName" not-null="true" />
     <property name="NickName" column="NickName" not-null="true" />
+
+    <property name="TotalEarnings" formula="(
+              SELECT SUM(PO.AmountToBePaid)
+    FROM KC_Payouts PO INNER JOIN KC_GameResults GR
+            ON PO.GameId = GR.GameId AND PO.Place + 1 = GR.Place
+              INNER JOIN KC_Games G     ON GR.GameId = G.GameId
+    WHERE date(G.GameDate) BETWEEN '2009-01-01' AND '2009-12-31'
+    AND GR.PlayerId = PlayerId)" />
   </class>
 </hibernate-mapping>
