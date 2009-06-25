@@ -11,6 +11,14 @@
   </label>
   
   <label>
+    <span>Buy In</span>
+    <asp:DropDownList ID="ctlBuyIn" runat="server">
+      <asp:ListItem Text="$20" Value="20" Selected="True" />
+      <asp:ListItem Text="$50" Value="50" />
+    </asp:DropDownList>
+  </label>
+  
+  <label>
     <asp:Button ID="ctlCreateGame" runat="server" Text="Create Game" />
   </label>
 </fieldset>

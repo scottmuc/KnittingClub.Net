@@ -17,6 +17,7 @@ namespace KnittingClub.Domain
         public virtual string NickName { get; set; }
 
         public virtual int TotalEarnings { get; private set; }
+        public virtual int GamesPlayed { get; private set; }
 
 
     }

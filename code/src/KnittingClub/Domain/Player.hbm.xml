@@ -16,5 +16,13 @@
               INNER JOIN KC_Games G     ON GR.GameId = G.GameId
     WHERE date(G.GameDate) BETWEEN '2009-01-01' AND '2009-12-31'
     AND GR.PlayerId = PlayerId)" />
+
+    <property name="GamesPlayed" formula="(
+              SELECT COUNT(GPA.PlayerId)
+    FROM KC_GamePlayerAssignments GPA INNER JOIN KC_Games G     
+            ON GPA.GameId = G.GameId
+    WHERE date(G.GameDate) BETWEEN '2009-01-01' AND '2009-12-31'
+    AND GPA.PlayerId = PlayerId)" />    
+    
   </class>
 </hibernate-mapping>

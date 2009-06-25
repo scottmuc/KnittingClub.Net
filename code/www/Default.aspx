@@ -11,12 +11,14 @@
   <tr>
     <th>Name</th>
     <th>Total Points</th>
+    <th>Games Played</th>
   </tr>
 <asp:Repeater ID="ctlYearlyStats" runat="server">
 <ItemTemplate>
   <tr>
     <td><%# Eval("NickName") %></td>
     <td><%# Eval("TotalEarnings") %></td>
+    <td><%# Eval("GamesPlayed") %></td>
   </tr>
 </ItemTemplate>
 

@@ -18,7 +18,14 @@ public partial class CreateGame : Page
 
     private void CreateNewGame()
     {
-        var game = new Game(new BuyIn(20)) {Title = ctlTitle.Text.Trim(), GameDate = DateTime.Now};
+        int buyInAmount = Convert.ToInt32(ctlBuyIn.SelectedValue);
+        var buyIn = new BuyIn(buyInAmount);
+
+        var game = new Game(buyIn)
+        {
+            Title = ctlTitle.Text.Trim(), 
+            GameDate = DateTime.Now
+        };
 
 
         var repo = IoC.Resolve<IGameRepository>();
