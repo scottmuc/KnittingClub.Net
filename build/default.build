@@ -102,7 +102,7 @@
             <fileset refid="product.references" />
         </copy>
     </target>
-
+    
     <target name="all" description="Builds everything, runs tests, and sets up local web site config"
         depends="clean, init, compile, test">
     </target>

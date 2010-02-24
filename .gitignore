@@ -22,7 +22,8 @@ bin
 *.user
 aspnet_client
 httpd.parse.errors
- 
+buildartifacts
+
 # Office Temp Files
 ~$* 
 
