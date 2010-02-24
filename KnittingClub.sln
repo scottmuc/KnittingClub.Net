@@ -1,13 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
+# SharpDevelop 3.2.0.5505
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnittingClub", "code\src\KnittingClub\KnittingClub.csproj", "{054FC4CB-2170-4E63-9FB7-1FF2CABBA61B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "build", "build\build.csproj", "{82BD9F51-B999-4AA6-B571-1A6C9AB3BE2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnittingClub.Tests", "code\src\KnittingClub.Tests\KnittingClub.Tests.csproj", "{3B18D014-8ED0-4FDF-AFC0-02D22AD44021}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "code\www\", "{2671394B-BF67-4CC2-961A-B49EB366E1BE}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "code\www", "{2671394B-BF67-4CC2-961A-B49EB366E1BE}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "3.5"
 		ProjectReferences = "{054FC4CB-2170-4E63-9FB7-1FF2CABBA61B}|KnittingClub.dll;"
