@@ -8,7 +8,7 @@ namespace KnittingClub.Tests.Domain
         [Fact]
         public void When_a_player_is_created_it_should_start_with_empty_properties()
         {
-            var player = new Player();
+            Player player = new Player();
 
             Assert.Equal(string.Empty, player.FirstName);
             Assert.Equal(string.Empty, player.LastName);

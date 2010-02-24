@@ -9,6 +9,9 @@ namespace KnittingClub.Domain
         public Player()
         {
             id = 0;
+            this.FirstName = string.Empty;
+            this.LastName = string.Empty;
+            this.NickName = string.Empty;
         }
 
         public virtual int Id { get { return id; } }
@@ -18,7 +21,6 @@ namespace KnittingClub.Domain
 
         public virtual int TotalEarnings { get; private set; }
         public virtual int GamesPlayed { get; private set; }
-
 
     }
 }

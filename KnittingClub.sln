@@ -6,6 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnittingClub", "code\src\Kn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnittingClub.Tests", "code\src\KnittingClub.Tests\KnittingClub.Tests.csproj", "{3B18D014-8ED0-4FDF-AFC0-02D22AD44021}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2C4D4750-2AE3-44E3-A221-B07954C93EF5}"
+	ProjectSection(SolutionItems) = postProject
+		build\default.build = build\default.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
