@@ -2,11 +2,11 @@
 cls
 if "%1"=="" goto targetlist
 
-tools\nant\bin\NAnt.exe -buildfile:main.build %1
+tools\nant\bin\NAnt.exe -buildfile:default.build %1
 
 goto end
 
 :targetlist
-tools\nant\bin\NAnt.exe -buildfile:main.build -projecthelp
+tools\nant\bin\NAnt.exe -buildfile:default.build -projecthelp
 
 :end
