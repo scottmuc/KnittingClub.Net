@@ -9,8 +9,6 @@ namespace KnittingClub.Tests.Domain
 {
     public class GameTests
     {
-
-
         [Fact]
         public void When_a_Game_is_constructed_it_should_start_with_zero_players()
         {
@@ -54,7 +52,7 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            game.AddPayouts(GetPayouts());
+            game.AddPayouts(TwoPlayerPayout());
 
              Assert.Throws<ArgumentException>(() => game.AddEntrant(new Player()));          
         }
@@ -81,7 +79,7 @@ namespace KnittingClub.Tests.Domain
             Assert.False(game.IsStarted());
 
 
-            game.AddPayouts(GetPayouts());
+            game.AddPayouts(TwoPlayerPayout());
 
             Assert.True(game.IsStarted());
         }
@@ -96,10 +94,10 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            game.AddPayouts(GetPayouts());
+            game.AddPayouts(TwoPlayerPayout());
 
             Assert.True(game.IsStarted());
-            Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayouts()));
+            Assert.Throws<ArgumentException>(() => game.AddPayouts(TwoPlayerPayout()));
             Assert.True(game.IsStarted());
         }
 
@@ -114,7 +112,7 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
 
 
-            Exception ex = Assert.Throws<ArgumentException>(() => game.AddPayouts(GetPayouts()));
+            Exception ex = Assert.Throws<ArgumentException>(() => game.AddPayouts(TwoPlayerPayout()));
             Assert.Equal("Payout total of 60 does not equal the prize pool of 80", ex.Message);
         }
 
@@ -127,7 +125,7 @@ namespace KnittingClub.Tests.Domain
             game.AddEntrant(new Player());
             game.AddEntrant(new Player());
 
-            game.AddPayouts(GetPayouts());
+            game.AddPayouts(TwoPlayerPayout());
 
             const int firstPlace = 1;
             int result = game.GetPayoutFor(firstPlace);
@@ -136,7 +134,7 @@ namespace KnittingClub.Tests.Domain
         }
 
 
-        private static IList<Payout> GetPayouts()
+        private static IList<Payout> TwoPlayerPayout()
         {
             return new List<Payout>
                        {
@@ -144,6 +142,5 @@ namespace KnittingClub.Tests.Domain
                            new Payout {AmountToBePaid = 20, Place = 2}
                        };
         }
-
     }
 }
