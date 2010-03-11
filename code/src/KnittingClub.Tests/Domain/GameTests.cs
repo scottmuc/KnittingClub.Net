@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using KnittingClub.Domain;
-using KnittingClub.Utility;
 
 using Xunit;
 
@@ -41,7 +41,7 @@ namespace KnittingClub.Tests.Domain
 
             Assert.Throws<ArgumentException>(() => game.AddEntrant(entrant));            
             Assert.Contains(entrant, game.AllEntrants());
-            Assert.Equal(1, game.AllEntrants().GetCount());
+            Assert.Equal(1, game.AllEntrants().Count());
         }
 
         [Fact]
