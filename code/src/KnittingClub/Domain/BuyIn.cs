@@ -13,6 +13,6 @@ namespace KnittingClub.Domain
             this.BuyInAmount = amount;
         }
 
-        public virtual int BuyInAmount { get; set; }
+        public virtual int BuyInAmount { get; private set; }
     }
 }
