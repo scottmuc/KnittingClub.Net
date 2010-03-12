@@ -5,11 +5,11 @@ using Rhino.Commons;
 
 namespace KnittingClub.Services.ApplicationStartup
 {
-    public class ContainerBootstrapper : ICommand
+    public class Bootstrapper : ICommand
     {
         public static void ApplicationBegin() 
         {
-            new ContainerBootstrapper().Execute();
+            new Bootstrapper().Execute();
         }
 
         public void Execute()
@@ -17,6 +17,8 @@ namespace KnittingClub.Services.ApplicationStartup
             IWindsorContainer container = new WindsorContainer(new XmlInterpreter());
 
             IoC.Initialize(container);
+
+            new DatabaseInitializer().InitializeDatabase();
         }
     }
 }

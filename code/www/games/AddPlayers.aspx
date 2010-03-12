@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/layouts/layout.master" AutoEventWireup="true" CodeFile="AddPlayers.aspx.cs" Inherits="EditGame" %>
-<%@ Register TagPrefix="kc" Namespace="KnittingClub.UI.Web.Controls" Assembly="KnittingClub"  %>
+<%@ Register TagPrefix="kc" Namespace="KnittingClub.UI.Web.Controls" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

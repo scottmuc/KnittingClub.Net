@@ -8,7 +8,7 @@ public partial class Global : HttpApplication, IContainerAccessor
 {
     protected void Application_Start(object sender, EventArgs e)
     {
-        ContainerBootstrapper.ApplicationBegin();
+        Bootstrapper.ApplicationBegin();
     }
 
     /// <summary>
