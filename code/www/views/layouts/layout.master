@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="layout.master.cs" Inherits="views_layouts_layout" %>
+﻿<%@ Master CodeFile="layout.master.cs" Inherits="views_layouts_layout" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,9 +21,10 @@
     </form>
     <hr />
     <ul>   
-      <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/players/Add.aspx" Text="Add Players" runat="server" /></li>
-      <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/games/Create.aspx" Text="Create Game" runat="server" /></li>
-      <li><asp:HyperLink ID="HyperLink3" NavigateUrl="~/games/" Text="View Games" runat="server" /></li>
+      <li><asp:HyperLink NavigateUrl="~/players/" Text="Players" runat="server" /></li>
+      <li><asp:HyperLink NavigateUrl="~/players/Add.aspx" Text="Add Players" runat="server" /></li>
+      <li><asp:HyperLink NavigateUrl="~/games/Create.aspx" Text="Create Game" runat="server" /></li>
+      <li><asp:HyperLink NavigateUrl="~/games/" Text="View Games" runat="server" /></li>
     </ul>
 </body>
 </html>

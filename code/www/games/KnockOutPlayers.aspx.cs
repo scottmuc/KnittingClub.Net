@@ -40,7 +40,7 @@ public partial class games_KnockOutPlayers : Page
         game.KnockPlayerOut(knockedOut, knockerOut);
 
         gameRepo.Save(game);
-        
+        message.Text = string.Format("Success: {0} knocked out {1}", knockerOut.FirstName, knockedOut.FirstName);
     }
 
     protected void Page_Load(object sender, EventArgs e)
