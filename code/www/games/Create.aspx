@@ -15,6 +15,7 @@
     <asp:DropDownList ID="ctlBuyIn" runat="server">
       <asp:ListItem Text="$20" Value="20" Selected="True" />
       <asp:ListItem Text="$50" Value="50" />
+      <asp:ListItem Text="$75" Value="75" />
     </asp:DropDownList>
   </label>
   
