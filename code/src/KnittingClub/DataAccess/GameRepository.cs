@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Castle.Facilities.NHibernateIntegration;
 using KnittingClub.Domain;
@@ -21,6 +22,15 @@ namespace KnittingClub.DataAccess
             {
                 var criteria = session.CreateCriteria(typeof (Game)).AddOrder(Order.Desc("GameDate"));
                 return criteria.List<Game>();                    
+            }
+        }
+
+        public IList<int> GetYearsThatHaveGames()
+        {
+            using (var session = sessionManager.OpenSession())
+            {
+                var criteria = session.CreateQuery(@"SELECT distinct YEAR(g.GameDate) from Game g order by YEAR(g.GameDate) DESC");
+                return criteria.List<int>();
             }
         }
     }

@@ -15,6 +15,9 @@ public partial class _Default : Page
                       orderby p.TotalEarnings descending
                       select p;
 
+        ctlYears.DataSource = IoC.Resolve<IGameRepository>().GetYearsThatHaveGames();
+        ctlYears.DataBind();
+
         ctlYearlyStats.DataSource = players;
         ctlYearlyStats.DataBind();
     }
