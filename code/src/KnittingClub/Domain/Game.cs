@@ -92,6 +92,11 @@ namespace KnittingClub.Domain
 
         public virtual int GetPayoutFor(int place)
         {
+            if (place > payouts.Count)
+            {
+                return 0;
+            }
+
             return payouts[place - 1].AmountToBePaid;
         }
 

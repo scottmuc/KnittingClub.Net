@@ -6,8 +6,7 @@
 
 <h1>CBC Knitting Club</h1>
 
-
-<asp:DropDownList ID="ctlYears" runat="server" />
+<asp:DropDownList ID="ctlYears" AutoPostBack="true" runat="server" />
 
 <table>
   <tr>

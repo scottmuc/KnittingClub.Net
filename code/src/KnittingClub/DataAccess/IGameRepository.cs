@@ -8,5 +8,6 @@ namespace KnittingClub.DataAccess
     {
         IList<Game> GetAllLatestFirst();
         IList<int> GetYearsThatHaveGames();
+        IList<Game> GetAllGamesInAYear(int year);
     }
 }
