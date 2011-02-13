@@ -1,0 +1,3 @@
+[submodule "Dependencies/PowerYaml"]
+	path = Dependencies/PowerYaml
+	url = git@github.com:scottmuc/PowerYaml.git
