@@ -8,6 +8,7 @@ packageContents:
     Dependencies\PSake:             Dependencies\PSake
     Dependencies\YDeliver:          Dependencies\YDeliver
 
+    deploy.bat:                     deploy.bat
     deploy.ps1:                     deploy.ps1
     deploy.yml:                     deploy.yml
 
