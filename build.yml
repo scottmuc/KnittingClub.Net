@@ -1,0 +1,13 @@
+# destination is always prefixed by build\package
+# you can specify source files and/or folders to copied
+# to the package location. 
+packageContents:
+    KnittingClub.Web:               Website
+
+    Dependencies\PowerYaml:         Dependencies\PowerYaml
+    Dependencies\PSake:             Dependencies\PSake
+    Dependencies\YDeliver:          Dependencies\YDeliver
+
+    deploy.ps1:                     deploy.ps1
+    deploy.yml:                     deploy.yml
+

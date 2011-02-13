@@ -1,0 +1,4 @@
+ILMerge
+PowerYaml
+NUnit
+PSake

@@ -1,0 +1,8 @@
+targets:
+    DeployWeb:
+        localhost:
+            KnittingClubWebsite:
+                ApplicationLabel:  KnittingClub 
+                WebSourceDir:      Website 
+                WebHostHeader:     knittingclub.local
+

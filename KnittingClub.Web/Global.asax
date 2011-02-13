@@ -1,0 +1,1 @@
+﻿<%@ Application CodeFile="Global.asax.cs" Inherits="Global" CodeBehind="Global.asax.cs" %>
