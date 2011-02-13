@@ -23,7 +23,7 @@ build
 *.user
 aspnet_client
 httpd.parse.errors
-buildartifacts
+PrecompiledWeb
 
 # Office Temp Files
 ~$* 
