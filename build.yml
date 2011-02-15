@@ -2,13 +2,13 @@
 # you can specify source files and/or folders to copied
 # to the package location. 
 packageContents:
-    KnittingClub.Web:               Website
+    PrecompiledWeb\KnittingClub.Web:            Website
 
-    Dependencies\PowerYaml:         Dependencies\PowerYaml
-    Dependencies\PSake:             Dependencies\PSake
-    Dependencies\YDeliver:          Dependencies\YDeliver
+    Dependencies\PowerYaml:                     Dependencies\PowerYaml
+    Dependencies\PSake:                         Dependencies\PSake
+    Dependencies\YDeliver:                      Dependencies\YDeliver
 
-    deploy.bat:                     deploy.bat
-    deploy.ps1:                     deploy.ps1
-    deploy.yml:                     deploy.yml
+    deploy.bat:                                 deploy.bat
+    deploy.ps1:                                 deploy.ps1
+    deploy.yml:                                 deploy.yml
 

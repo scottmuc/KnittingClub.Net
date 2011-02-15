@@ -1,0 +1,14 @@
+applications:
+
+    kc:
+        deploy:
+            teamcity_url:               "192.168.2.109:2112"
+            teamcity_project_id:        bt3
+            teamcity_artifact_name:     KnittingClub.zip
+
+        targets:
+            DeployWeb:
+                "192.168.2.109":
+                    KnittingClub:
+                        WebHostHeader:      knittingclub.remote
+

@@ -2,7 +2,7 @@ param(
     $task = @("DeployWeb"),
     $verbose = "/noconsolelogger",  #q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]. e.g.: /v:n
     $ip = "localhost",
-    $remoteConfig = @{ }
+    $configurationOverrides = @{ }
 )
 
 # Obtain the root project path to base all other pathes off of
@@ -11,6 +11,8 @@ $global:rootDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Import project specific conventions (ybc = YDeploy Build Conventions)
 $ybc = @{}
 $ybc.toolsDir = "$rootDir\Dependencies"
+
+Import-Module webadministration
 
 # PSake is the task execution framework being used
 Import-Module "$($ybc.toolsDir)\PSake\psake.psm1" -force
@@ -24,7 +26,7 @@ Invoke-Psake "$($ybc.toolsDir)\YDeliver\YDeploy\Deployment.Tasks.ps1" -taskList 
         "rootDir" = $rootDir;
         "verbose" = $verbose;
         "localConfig" = $config;
-        "remoteConfig" = $remoteConfig;
+        "remoteConfig" = $configurationOverrides;
         "ip" = $ip;
         "ybc" = $ybc;
       }
