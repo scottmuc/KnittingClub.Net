@@ -26,7 +26,4 @@ cd $unzip_dir
 Set-ExecutionPolicy Unrestricted
 ####################################################################
 
-$drive = Get-InstallDrive $config
-Ensure-IISServerDirectory($drive)
-
 & ".\deploy.ps1" -task $target -ip $ip -remoteConfig $config
