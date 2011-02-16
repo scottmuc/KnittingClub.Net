@@ -1,8 +1,6 @@
 task Compile {
     Log-Message "Compiling $solution ..."
-
-    $solution = $ybc.solution
-    $buildConfiguration = $ybc.buildConfiguration
+    $solution, $buildConfiguration = Get-Conventions solution, buildConfiguration
 
     $newVersion = 'AssemblyVersion("' + $buildVersion + '")';
     $newFileVersion = 'AssemblyFileVersion("' + $buildVersion + '")';
@@ -17,9 +15,7 @@ task Compile {
 
         Move-Item $tmpFile $_.FullName -force        
     }
-    
-    iex "$msbuild $solution /p:Configuration=$buildConfiguration $verbose"
-    
-    Exit-IfError "Build Failed - Compilation"
+
+    Exec { msbuild $solution /p:Configuration=$buildConfiguration $verbose } "Build Failed - Compilation"
 }
 

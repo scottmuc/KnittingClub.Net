@@ -9,10 +9,11 @@ param(
 
     # These are MSBuild specific verbosity levels. If you want see more build output it can be
     # changed via the -verbose parameter.
+    #   $verbose = "minimial"  # debug, info, warn, error, fatal, none
     $verbose = "/noconsolelogger"  #q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]. e.g.: /v:n
 )
 
-# Obtain the root project path to base all other pathes off of
+# One root dir to rule them all and in global scope bind them!
 $global:rootDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Import project specific conventions (ybc = YDeploy Build Conventions)
@@ -31,7 +32,7 @@ Import-Module "$($ybc.toolsDir)\$dependenciesDir\PowerYaml\PowerYaml.psm1" -forc
 $config = Get-Yaml -YamlFile "$rootDir\build.yml"
 
 # Here's where the build is actually executed
-Invoke-Psake "$($ybc.toolsDir)\YDeliver\YBuild\Build.Tasks.ps1" -taskList $task `
+Invoke-Psake "$($ybc.toolsDir)\YDeliver\YBuild\Build.Tasks.ps1" -framework $config.dotnet.framework_version -taskList $task `
     -parameters @{
         "buildVersion" = $buildVersion;
         "ybc" = $ybc;

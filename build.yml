@@ -1,3 +1,7 @@
+# This defaults to 3.5
+dotnet:
+    framework_version: "3.5x64"
+
 # destination is always prefixed by build\package
 # you can specify source files and/or folders to copied
 # to the package location. 

@@ -1,7 +1,6 @@
 
 task EnvironmentCheck {
-
-    $toolsDir = $ybc.toolsDir
+    $toolsDir = Get-Conventions toolsDir
 
     if (-not (Test-Path "$toolsDir\ILMerge")) {
         Log-Message -message "Could not find ILMerge dependency" -type "error"

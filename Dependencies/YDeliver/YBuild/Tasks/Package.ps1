@@ -1,10 +1,6 @@
 task Package {
     Log-Message "Packaging artifact of the build..."
-
-    $buildDir = $ybc.buildDir
-    $packageDir = $ybc.packageDir
-    $toolsDir = $ybc.toolsDir
-    $solution = $ybc.solution
+    $buildDir,$packageDir,$toolsDir,$solution = Get-Conventions buildDir,packageDir,toolsDir,solution
 
     if (-not (Test-Path $packageDir)) {
         md $packageDir | Out-Null
@@ -23,7 +19,7 @@ task Package {
     $zip = "$toolsDir\7z\7za.exe"
     $zipFileName = Get-ChildItem $solution | % { $_.BaseName }
 
-    & $zip a -r "$buildDir\$($zipFileName).zip" *
+    Exec { & $zip a -r $buildDir\$($zipFileName).zip * | Out-Null }
 
     popd
 }

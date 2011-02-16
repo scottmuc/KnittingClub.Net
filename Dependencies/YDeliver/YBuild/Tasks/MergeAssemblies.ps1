@@ -1,11 +1,8 @@
 task MergeAssemblies {
     Log-Message "Merging assemblies with ILMerge..."
-   
-    $toolsDir = $ybc.toolsDir
-    $buildDir = $ybc.buildDir
-
+  
+    $toolsDir, $buildDir = Get-Conventions toolsDir, buildDir
     $ILMerge = "$toolsDir\ILMerge\ILMerge.exe"
-
     $outputDir = "$buildDir\ilmerge"
 
     $target = $config.ilmerge.target
@@ -17,6 +14,6 @@ task MergeAssemblies {
         md $outputDir | Out-Null
     }
 
-    iex "$ILMerge /target:$target /out:$buildDir\ilmerge\$filename $assemblies"
+    Exec { & $ILMerge /target:$target /out:$buildDir\ilmerge\$filename $assemblies }
 }
 

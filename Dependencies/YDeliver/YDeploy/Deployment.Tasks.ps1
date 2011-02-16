@@ -1,5 +1,6 @@
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-. "$scriptDir\..\CommonFunctions.ps1"
+$script:dir = Split-Path -Parent $MyInvocation.MyCommand.Path
+gci $script:dir\..\CommonFunctions | % { . $_.FullName }
+gci $script:dir\Tasks | % { . $_.FullName }
 
 function Set-WebsiteBindings($siteName, $bindings) {
 
@@ -68,8 +69,3 @@ function Deploy-IISWebsite($config) {
 
     Start-Website -name $siteName
 }
-
-
-
-
-Import-Tasks $scriptDir
