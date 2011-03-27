@@ -4,5 +4,5 @@ if "%BUILD_NUMBER%"=="" (
 )
 
 @powershell set-executionpolicy unrestricted
-@powershell .\build.ps1 -buildNumber %BUILD_NUMBER%
+@powershell .\build.ps1 -ver /v:n -buildNumber %BUILD_NUMBER%
  
